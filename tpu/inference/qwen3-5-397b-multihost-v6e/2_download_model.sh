@@ -43,7 +43,7 @@ gcloud storage buckets add-iam-policy-binding "gs://${GCS_BUCKET}" \
 
 echo "[$(date)] ==================== Submitting the model download job... ===================="
 # [START hypercomputer_tpu_infer_qwen3_5_397b_multihost_v6e_download_job]
-envsubst '$GCS_BUCKET' < download_qwen3_30b.yaml | kubectl apply -f -
+envsubst '${VLLM_IMAGE} $GCS_BUCKET' < download_qwen3_30b.yaml | kubectl apply -f -
 # [END hypercomputer_tpu_infer_qwen3_5_397b_multihost_v6e_download_job]
 
 echo "Waiting for the download-qwen3 pod to be created and start..."
